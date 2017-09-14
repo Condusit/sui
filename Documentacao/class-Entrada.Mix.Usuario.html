@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class Entrada\Mix\Usuario | sui</title>
+
+	<script type="text/javascript" src="resources/combined.js?2780970235"></script>
+	<script type="text/javascript" src="elementlist.js?2145179911"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li><a href="namespace-Apoio.html">Apoio<span></span></a>
+						<ul>
+				<li><a href="namespace-Apoio.PHPMailer.html">PHPMailer<span></span></a>
+						<ul>
+				<li><a href="namespace-Apoio.PHPMailer.test.html">test</a>
+						</li>
+							</ul></li></ul></li>
+				<li class="active"><a href="namespace-Entrada.html">Entrada<span></span></a>
+						<ul>
+				<li class="active"><a href="namespace-Entrada.Mix.html">Mix</a>
+						</li>
+				<li><a href="namespace-Entrada.Sighra.html">Sighra</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-None.html">None</a>
+						</li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+				<li><a href="namespace-Processamento.html">Processamento</a>
+						</li>
+				<li><a href="namespace-Saida.html">Saida</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Entrada.Mix.Construtor.html">Construtor</a></li>
+				<li><a href="class-Entrada.Mix.Evento.html">Evento</a></li>
+				<li><a href="class-Entrada.Mix.EventoNotificacao.html">EventoNotificacao</a></li>
+				<li><a href="class-Entrada.Mix.Motorista.html">Motorista</a></li>
+				<li><a href="class-Entrada.Mix.Posicao.html">Posicao</a></li>
+				<li><a href="class-Entrada.Mix.Requisitor.html">Requisitor</a></li>
+				<li class="active"><a href="class-Entrada.Mix.Usuario.html">Usuario</a></li>
+				<li><a href="class-Entrada.Mix.Veiculo.html">Veiculo</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Entrada.Mix.html" title="Summary of Entrada\Mix"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Usuario</h1>
+
+
+	<div class="description">
+	
+<p>Classe responssavel por realizar operações de login e atualização de
+token para as demais requisições.</p>
+
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Entrada.html">Entrada</a>\<a href="namespace-Entrada.Mix.html">Mix</a><br />
+		
+
+				<b>Author:</b>
+				Anderson<br />
+				<b>Since:</b>
+				23/08/2017<br />
+		<b>Located at</b> <a href="source-class-Entrada.Mix.Usuario.html#7-93" title="Go to source code">Entrada/Mix/Usuario.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="fazerLogin" id="_fazerLogin">
+
+		<td class="attributes"><code>
+			 public 
+			String
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fazerLogin">#</a>
+		<code><a href="source-class-Entrada.Mix.Usuario.html#42-92" title="Go to source code">fazerLogin</a>( <span>String <var>$usuario</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Metodo que realiza função de login em web service para conseguir um token
+valido que será utilizado na próximas requisições.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Metodo que realiza função de login em web service para conseguir um token
+valido que será utilizado na próximas requisições.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$usuario</var></dt>
+					<dd><code>String</code><br>$usuario Nome do usuario que precisa requisitar um novo token no sistema.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>String</code><br>$token Codigo de token que será utilizado para requisições.<br />
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><code><a href="class-Apoio.Erro.html">Apoio\Erro</a></code></code><br>de login Execassão em falha de usuario ou senha.<br />
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="usuario" id="$usuario">
+		<td class="attributes"><code>
+			public  
+			String
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Entrada.Mix.Usuario.html#15-19" title="Go to source code"><var>$usuario</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">null</span></code></td>
+		<td class="description"><div>
+			<a href="#$usuario" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Nome do usuario.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Nome do usuario.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="senha" id="$senha">
+		<td class="attributes"><code>
+			public  
+			String
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Entrada.Mix.Usuario.html#20-24" title="Go to source code"><var>$senha</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">null</span></code></td>
+		<td class="description"><div>
+			<a href="#$senha" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Senha do usuario.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Senha do usuario.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="token" id="$token">
+		<td class="attributes"><code>
+			public  
+			String
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Entrada.Mix.Usuario.html#25-29" title="Go to source code"><var>$token</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">null</span></code></td>
+		<td class="description"><div>
+			<a href="#$token" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Token retornado para requisições futuras .</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Token retornado para requisições futuras .</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="ultimaDataLogin" id="$ultimaDataLogin">
+		<td class="attributes"><code>
+			public  
+			String
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Entrada.Mix.Usuario.html#30-34" title="Go to source code"><var>$ultimaDataLogin</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">null</span></code></td>
+		<td class="description"><div>
+			<a href="#$ultimaDataLogin" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Data do ultimo login.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Data do ultimo login.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		sui API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

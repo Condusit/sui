@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class Apoio\Erro | sui</title>
+
+	<script type="text/javascript" src="resources/combined.js?2780970235"></script>
+	<script type="text/javascript" src="elementlist.js?2145179911"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Namespaces</h3>
+			<ul>
+				<li class="active"><a href="namespace-Apoio.html">Apoio<span></span></a>
+						<ul>
+				<li><a href="namespace-Apoio.PHPMailer.html">PHPMailer<span></span></a>
+						<ul>
+				<li><a href="namespace-Apoio.PHPMailer.test.html">test</a>
+						</li>
+							</ul></li></ul></li>
+				<li><a href="namespace-Entrada.html">Entrada<span></span></a>
+						<ul>
+				<li><a href="namespace-Entrada.Mix.html">Mix</a>
+						</li>
+				<li><a href="namespace-Entrada.Sighra.html">Sighra</a>
+						</li>
+							</ul></li>
+				<li><a href="namespace-None.html">None</a>
+						</li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
+				<li><a href="namespace-Processamento.html">Processamento</a>
+						</li>
+				<li><a href="namespace-Saida.html">Saida</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Apoio.Conexoes.html">Conexoes</a></li>
+				<li class="active"><a href="class-Apoio.Erro.html">Erro</a></li>
+				<li><a href="class-Apoio.Helpers.html">Helpers</a></li>
+				<li><a href="class-Apoio.Mail.html">Mail</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Apoio.html" title="Summary of Apoio"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Erro</h1>
+
+
+	<div class="description">
+	
+<p>Classe destinada a tratamento de erros no sistema.</p>
+
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Apoio.html">Apoio</a><br />
+		
+
+				<b>Author:</b>
+				Anderson<br />
+				<b>Version:</b>
+				1<br />
+		<b>Located at</b> <a href="source-class-Apoio.Erro.html#7-193" title="Go to source code">Apoio/Erro.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-Apoio.Erro.html#36-48" title="Go to source code">__construct</a>( <span>String <var>$classe</var></span>, <span>String <var>$metodo</var></span>, <span>String <var>$descricao</var></span>, <span>String <var>$datahora</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Construtor da classe de erro.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Construtor da classe de erro.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$classe</var></dt>
+					<dd><code>String</code><br>$classe Classe onde aconteceu o erro.</dd>
+					<dt><var>$metodo</var></dt>
+					<dd><code>String</code><br>$metodo Metodo onde aconteceu o erro.</dd>
+					<dt><var>$descricao</var></dt>
+					<dd><code>String</code><br>$descricao Descrição detalhada do erro.</dd>
+					<dt><var>$datahora</var></dt>
+					<dd><code>String</code><br>$datahora Data e hora quando aconteceu o erro.</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="registrarErro" id="_registrarErro">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_registrarErro">#</a>
+		<code><a href="source-class-Apoio.Erro.html#50-109" title="Go to source code">registrarErro</a>( )</code>
+
+		<div class="description short">
+			
+<p>Metodo que server para registrar o erro gerado com os dado informados nas
+propriedades.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Metodo que server para registrar o erro gerado com os dado informados nas
+propriedades.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br>Retorna "TRUE" se o email foi enviado com sucesso.<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="classe" id="$classe">
+		<td class="attributes"><code>
+			public  
+			String
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Apoio.Erro.html#15-19" title="Go to source code"><var>$classe</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">null</span></code></td>
+		<td class="description"><div>
+			<a href="#$classe" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>nome da classe ou arquivo onde ocorreu o erro.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>nome da classe ou arquivo onde ocorreu o erro.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="metodo" id="$metodo">
+		<td class="attributes"><code>
+			public  
+			String
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Apoio.Erro.html#20-24" title="Go to source code"><var>$metodo</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">null</span></code></td>
+		<td class="description"><div>
+			<a href="#$metodo" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Nome do metodo ou função onde ocorreu o erro.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Nome do metodo ou função onde ocorreu o erro.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="descricao" id="$descricao">
+		<td class="attributes"><code>
+			public  
+			String
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Apoio.Erro.html#25-29" title="Go to source code"><var>$descricao</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">null</span></code></td>
+		<td class="description"><div>
+			<a href="#$descricao" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Descrição breve do erro.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Descrição breve do erro.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="dataHora" id="$dataHora">
+		<td class="attributes"><code>
+			public  
+			String
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Apoio.Erro.html#30-34" title="Go to source code"><var>$dataHora</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">null</span></code></td>
+		<td class="description"><div>
+			<a href="#$dataHora" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Data do momento em que ocorreu o erro.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Data do momento em que ocorreu o erro.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		sui API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>
