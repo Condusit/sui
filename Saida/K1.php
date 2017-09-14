@@ -348,6 +348,11 @@ class K1 {
             \Apoio\Helpers::msg("Enviador", "Posicao: {$posicao['id_rastreador']} da {$posicao['tecnologia']} para o {$posicao['programa']}");
             //Executa o sql extruturado anteriormente--
             $connK1Integrador->query($sql);
+            $connK1Integrador->query("update monitor set 
+            monitor.hora_evento = '{$posicao['data_hora_evento']}',
+            monitor.ultimo_evento = '".date("Y-m-d H:i:s")."'
+            where
+            monitor.tecnologia = '{$posicao['tecnologia']}'");
             //Executa o sql extruturado anteriormente--
         }
         
