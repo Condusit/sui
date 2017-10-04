@@ -4,12 +4,16 @@ require_once '../Config.php';
 
 use Processamento\Mix;
 use Processamento\Tracker;
+use Processamento\Sighra;
 
 
-//Busca posicões da Mix---
+
 $mix = new Mix();
 $mix->buscarPosicoes();
-//Busca posicões da Mix---
+
 
 $tracker = new Tracker();
 $tracker->buscarPosicoes();
+
+$sighra = new Sighra();
+$sighra->buscarPosicoes();
