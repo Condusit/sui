@@ -66,7 +66,7 @@ class Veiculo {
     public function atualizarListaVeiculos(){
         //Conecta e busca o token para realização da requisição----------------------------------------------------------
         $connMix = Conexoes::conectarMix();
-        $usuario = $connMix->query("select usuario.token from usuario where usuario.usuario = 'krona'")->fetchAll();
+        $usuario = $connMix->query("select usuario.token from usuario where usuario.usuario = '56122CE BR - MAJONAV'")->fetchAll();
         //Conecta e busca o token para realização da requisição----------------------------------------------------------
         
         
@@ -81,27 +81,27 @@ class Veiculo {
             
             
             //Executa a requisição-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            try{
+            
                 $req = Requisitor::enviaRequisicao($body, "GetVehiclesList", $url, $header, $ns);
-            } catch (Exception $ex) {
-                //Se retornar que token é invalido faz o login para obter um novo token--------------------------------------------------------------------------------------------------------------------
-                $erroToken = "System.Web.Services.Protocols.SoapException: Server was unable to process request. ---> System.Security.Authentication.AuthenticationException: Invalid Token. Please log in.
-                at MiX.Web.ContextManager.GetTicket(String AuthenticationToken)
-                at MiX.Web.ContextManager.GetContext(String AuthenticationToken)
-                at VehicleProcessesWS.GetVehiclesList() in D:\b\2\_work\24\s\WebServices\AssetDataWebSvc\App_Code\VehicleProcessesWS.cs:line 127
-                --- End of inner exception stack trace ---";
                 
-                if($ex->getMessage() == $erroToken){
-                    $user = new Usuario();
-                    $user->fazerLogin("krona");
-                    unset($user);
-                    $this->atualizarListaVeiculos();
-                }else{
-                    $erro = new Erro("Veiculo", "atualizarListaVeiculos", "Erro ao realizar requisição do web service", date("Y-m-d H:i:s"));
-                    $erro->registrarErro();
+                if($req instanceof \Exception){
+                    //Se retornar que token é invalido faz o login para obter um novo token--------------------------------------------------------------------------------------------------------------------
+                    if(strripos($req->getMessage(), "(String AuthenticationToken)") != FALSE){
+                        $user = new Usuario();
+                        $user->fazerLogin("56122CE BR - MAJONAV");
+                        unset($user);
+                        $this->atualizarListaVeiculos();
+                    }else{
+                        $erro = new Erro("Veiculo", "atualizarListaVeiculos", "Erro ao realizar requisição do web service", date("Y-m-d H:i:s"));
+                        $erro->registrarErro();
+                    }
+                    //Se retornar que token é invalido faz o login para obter um novo token--------------------------------------------------------------------------------------------------------------------
                 }
-                //Se retornar que token é invalido faz o login para obter um novo token--------------------------------------------------------------------------------------------------------------------
-            }
+                    
+                
+//            } catch (Exception $ex) {
+//                
+//            }
             //Executa a requisição-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
             
             

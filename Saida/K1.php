@@ -160,28 +160,12 @@ class K1 {
     }
     /**
      * Metodo que envia os dados de uma posição para as tabelas de eventos do K1.
-     * @param Posicao $posicao Objeto "Posicao" com os dados que serão gravados na tabela de eventos do K1.
+     * @param Posicoes $posicoes lista de objetos "Posicao" com os dados que serão gravados na tabela de eventos do K1.
      */
     public function enviaPosicao($posicoes){
         //Conecta com os bancos do K1 e recupera o numero de viagem da posição a ser gravada-----
         $connK1Kronaone = Conexoes::conectarK1Kronaone();
         $connK1Integrador = Conexoes::conectarK1Integrador();
-//        $numero = $connK1Kronaone->query("select 
-//        via.id
-//        from kronaone.viagens via
-//        join kronaone.veiculos vei on vei.id = via.veiculo_id
-//        where
-//        (vei.tecnologia = '{$posicao['tecnologia']}' and vei.id_rastreador = '{$posicao['id_rastreador']}') or
-//        (via.localizador1_1 = '{$posicao['tecnologia']}' and via.id_localizador1_1 = '{$posicao['id_rastreador']}') or
-//        (via.localizador1_1 = '{$posicao['tecnologia']}' and via.id_localizador1_2 = '{$posicao['id_rastreador']}') or
-//        (via.localizador1_1 = '{$posicao['tecnologia']}' and via.id_localizador1_3 = '{$posicao['id_rastreador']}') or
-//        (via.localizador1_1 = '{$posicao['tecnologia']}' and via.id_localizador2_1 = '{$posicao['id_rastreador']}') or
-//        (via.localizador1_1 = '{$posicao['tecnologia']}' and via.id_localizador2_2 = '{$posicao['id_rastreador']}') or
-//        (via.localizador1_1 = '{$posicao['tecnologia']}' and via.id_localizador2_3 = '{$posicao['id_rastreador']}') or
-//        (via.localizador1_1 = '{$posicao['tecnologia']}' and via.id_localizador3_1 = '{$posicao['id_rastreador']}') or
-//        (via.localizador1_1 = '{$posicao['tecnologia']}' and via.id_localizador3_2 = '{$posicao['id_rastreador']}') or
-//        (via.localizador1_1 = '{$posicao['tecnologia']}' and via.id_localizador3_3 = '{$posicao['id_rastreador']}')")->fetch();
-//        
         $viagens = $connK1Kronaone->query("select 
         via.id,
         LOWER(vei.tecnologia) as tecnologia,
@@ -357,5 +341,106 @@ class K1 {
         }
         
         
+    }
+    /**
+     * Metodo que busca os comandos da tabela de comandos do k1
+     */
+    public function buscarComandos(){
+        //Realiza a Conexão com banco de dados do k1 e com Central------------
+        $conn170 = Conexoes::conectarK1Integrador();
+        $connCentral = Conexoes::conectarCentral();
+        //Realiza a Conexão com banco de dados do k1 e com Central------------
+        
+        
+        //Seleciona todos os comando para serem enviados-----------------------------------------------------
+        $comandos = $conn170->query("select * from comandos where comandos.pendencia = '1'")->fetchAll();
+        //Seleciona todos os comando para serem enviados-----------------------------------------------------
+        
+        
+        //Se houver comandos novos ele insere na tabela de comandos do SUI---------------------------------------------------------------------------------------------------------------------
+        if(count($comandos) > 0){
+            $i = 0;
+            
+            $sql = "replace into comandos(programa, id_ref_programa, codigo, texto, tecnologia, conta, id_terminal, `status`, id_ref_comando, status_tecnologia, tipo) values";
+            
+            foreach ($comandos as $comando){
+                $i++;
+                if($i > 1){
+                    $sql .= ",(";
+                }else{
+                    $sql .= "(";
+                }
+                
+                $sql .= "'K1', ";
+                $sql .= "'{$comando['id']}', ";
+                $sql .= "'{$comando['codigo']}', ";
+                $sql .= "'{$comando['texto']}', ";
+                $sql .= "'{$comando['tecnologia']}', ";
+                $sql .= "'{$comando['servidor']}', ";
+                $sql .= "'{$comando['idterminal']}', ";
+                $sql .= "'A Enviar', ";
+                $sql .= "'', ";
+                $sql .= "'', ";
+                $sql .= "'{$comando['tipo']}'";
+                
+                $sql .= ")";
+            }
+            
+            $connCentral->query($sql);
+            
+            \Apoio\Helpers::msg("Comandos", "Obtidos {$i} comandos!");
+        }else{
+            \Apoio\Helpers::msg("Comandos", "Nenhum novo comando encontrado no K1");
+        }
+        //Se houver comandos novos ele insere na tabela de comandos do SUI---------------------------------------------------------------------------------------------------------------------
+    }
+    /**
+     * Metodo que atualiza as condições dos comandos para o k1
+     */
+    public function atualizaComandos(){
+        //Conec com os bancos de dados necessários--------------------------
+        $conn170 = Conexoes::conectarK1Integrador();
+        $connCentral = Conexoes::conectarCentral();
+        //Conec com os bancos de dados necessários--------------------------
+        
+        
+        //Seleciona todos os comandos do k1 que tiverem com o atualizar = 1-----------------------------------
+        $comandos = $connCentral->query("select * from comandos com where com.programa = 'k1' and com.atualizado = '1'")->fetchAll();
+        //Seleciona todos os comandos do k1 que tiverem com o atualizar = 1-----------------------------------
+        
+        
+        //Atualiza comandos na tabela do k1 de acordo com os mesmo na tebala SUI------------------------------
+        if(count($comandos) > 0){
+            $i = 0;
+            foreach ($comandos as $comando){
+                $i++;
+                $sql = "update comandos set ";
+                $sql .= "status = '{$comando['status']}', ";
+                $sql .= "erro = '{$comando['erro']}', ";
+                $sql .= "data_envio = '{$comando['data_envio']}', ";
+                $sql .= "data_atualizacao = '".date("Y-m-d H:i:s")."', ";
+                $sql .= "ticket = '{$comando['id_ref_comando']}', ";
+                switch ($comando['status']){
+                    case "A Enviar":
+                        $sql .= "pendencia = '1' ";
+                        break;
+                    case "Enviando...":
+                        $sql .= "pendencia = '2' ";
+                        break;
+                    case "Enviado":
+                        $sql .= "pendencia = '0' ";
+                        break;
+                }
+                
+                $sql .= "where id = '{$comando['id_ref_programa']}'";
+                
+                $conn170->query($sql);
+                $connCentral->query("update comandos set comandos.atualizado = '0' where comandos.id = '{$comando['id']}'");
+            }
+            \Apoio\Helpers::msg("Comando", "Comandos atualizado: {$i}");
+        }else{
+            \Apoio\Helpers::msg("Comandos", "Nenhuma atualizacao de comandos k1");
+        }
+        //Atualiza comandos na tabela do k1 de acordo com os mesmo na tebala SUI------------------------------
     }
 }

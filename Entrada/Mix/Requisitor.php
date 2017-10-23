@@ -30,9 +30,9 @@ class Requisitor {
             }
             $res = $cliente->__soapCall($operacao, $arrayDados);
         } catch (Exception $ex) {
-            throw new Exception($ex->getMessage());
+            return new Exception($ex->getMessage());
         } catch (SoapFault $sf){
-            throw new Exception($sf->getMessage());
+            return new Exception($sf->getMessage());
         }
         
         $json = json_encode($res);
