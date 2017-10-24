@@ -6,25 +6,51 @@ require_once '../../Config.php';
 use Apoio\Conexoes;
 
 /**
- * Description of Saida
+ * Classe que controla a saida padrão dos dados para armazenamento de backup.
  *
  * @author Anderson
+ * @since 24/10/2017
  */
 class Saida {
+    
+    /**
+     * Metodo que excuta e armazena dados nas tabelas de historico.
+     */
     public function executar(){
+        
+        //Realiza a conexão com o banco de dados-----
         $connSighra = Conexoes::conectarSighra();
+        //Realiza a conexão com o banco de dados-----
         
         while(true){
+            
+            //Verifica se a tabela que será usada existe----------------------------------------
             $nomeTabela = date("Ymd");
             $tabela = $connSighra->query("show tables like '{$nomeTabela}'")->fetchAll();
+            //Verifica se a tabela que será usada existe----------------------------------------
+            
+            
+            
             
             if(count($tabela) > 0){
+                
+                //seleciona 1000 posições da tabela "posicoes02"-------------------------------------
                 $posicoes = $connSighra->query("select * from posicao02 limit 1000")->fetchAll();
+                //seleciona 1000 posições da tabela "posicoes02"-------------------------------------
+                
+                
                 
                 if(count($posicoes) > 0){
+                    
+                    //Monta o cabeçalho de sql para insertção dos dados-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
                     $sql = "insert into `{$nomeTabela}`(lhis_cvei_id, placa, id_rastreador, id_motorista, nome_motorista, lhis_sequencia, lhis_tapl_id, lhis_curso, lhis_cevt_id, evento, lhis_data_gps, lhis_data_ins, lhis_latitude, lhis_longitude, lhis_cpnt_id, cidade, uf, distancia, lhis_ignicao, lhis_velocidade, lhis_nsat, lhis_info, lhis_dop, lhis_input, lhis_output, lhis_tmco_id, lhis_inAlarme, lhis_chip, operadora, lhis_crua_id, rua, lhis_ext_id, id_macro, id_mensagem, id_alarme, texto, lhis_altitude, lhis_consumo, lhis_ltemp_1, lhis_ltemp_2, lhis_ltemp_3, lhis_ltemp_4, hodometro) values";
                     $i = 0;
                     $listaApagar = array();
+                    //Monta o cabeçalho de sql para insertção dos dados-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                    
+                    
+                    
+                    //Monta o resto do sql com os dados a serem inseridos-----------------------
                     foreach ($posicoes as $posicao){
                         $i++;
                         if($i > 1){
@@ -78,18 +104,35 @@ class Saida {
                         
                         $sql .= ")";
                         
+                        
+                        //Adiciona na lista a posição que será apagada na tebela "posicoes02"----
                         array_push($listaApagar, $posicao['lhis_id']);
+                        //Adiciona na lista a posição que será apagada na tebela "posicoes02"----
+                        
+                        
                     }
+                    //Monta o resto do sql com os dados a serem inseridos-----------------------
                     
+                    
+                    //Executa o sql e deleta os dados que ja foram processados da tabela "Posicoes02"-------
                     $connSighra->query($sql);
                     $apaga = implode(",", $listaApagar);
                     $connSighra->query("delete from posicao02 where posicao02.lhis_id in ({$apaga})");
                     \Apoio\Helpers::msg("Sighra", "Posicoes: {$i} geradas!");
+                    //Executa o sql e deleta os dados que ja foram processados da tabela "Posicoes02"-------
+                    
+                    
                 }else{
+                    
+                    //Mostra a mensagem caso nenhuma posição seja encontrada na tabela posicoes02--
                     \Apoio\Helpers::msg("Sighra", "Nenhuma posicao encontrada");
                     break;
+                    //Mostra a mensagem caso nenhuma posição seja encontrada na tabela posicoes02--
+                    
                 }
             }else{
+                
+                //Caso a tabela do dia não seja encontrada, então ela será criada------
                 $sql = "CREATE TABLE `{$nomeTabela}` (
                 `lhis_id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
                 `lhis_cvei_id` INT(10) UNSIGNED NOT NULL,
@@ -145,6 +188,8 @@ class Saida {
                 ;
                 ";
                 $connSighra->query($sql);
+                //Caso a tabela do dia não seja encontrada, então ela será criada------
+                
             }
         }
     }

@@ -7,7 +7,7 @@
 	<title>Class Entrada\Sighra\Comando | sui</title>
 
 	<script type="text/javascript" src="resources/combined.js?2780970235"></script>
-	<script type="text/javascript" src="elementlist.js?2145179911"></script>
+	<script type="text/javascript" src="elementlist.js?3887116818"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -30,9 +30,13 @@
 							</ul></li></ul></li>
 				<li class="active"><a href="namespace-Entrada.html">Entrada<span></span></a>
 						<ul>
+				<li><a href="namespace-Entrada.Goldensat.html">Goldensat</a>
+						</li>
 				<li><a href="namespace-Entrada.Mix.html">Mix</a>
 						</li>
 				<li class="active"><a href="namespace-Entrada.Sighra.html">Sighra</a>
+						</li>
+				<li><a href="namespace-Entrada.Tracker.html">Tracker</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-None.html">None</a>
@@ -53,6 +57,9 @@
 			<h3>Classes</h3>
 			<ul>
 				<li class="active"><a href="class-Entrada.Sighra.Comando.html">Comando</a></li>
+				<li><a href="class-Entrada.Sighra.Entrada.html">Entrada</a></li>
+				<li><a href="class-Entrada.Sighra.Processamento.html">Processamento</a></li>
+				<li><a href="class-Entrada.Sighra.Saida.html">Saida</a></li>
 			</ul>
 
 
@@ -100,8 +107,7 @@
 
 	<div class="description">
 	
-<p>Classe destinada a atualização de lista de comandos do banco de
-integração sighra.</p>
+<p>Classe que controle o envio de mensagens e comandos</p>
 
 	</div>
 
@@ -122,40 +128,95 @@ integração sighra.</p>
 				<b>Author:</b>
 				Anderson<br />
 				<b>Since:</b>
-				05/09/2017<br />
-		<b>Located at</b> <a href="source-class-Entrada.Sighra.Comando.html#8-102" title="Go to source code">Entrada/Sighra/Comando.php</a><br />
+				05/10/2017<br />
+		<b>Located at</b> <a href="source-class-Entrada.Sighra.Comando.html#6-107" title="Go to source code">Entrada/Sighra/Comando.php</a><br />
 	</div>
 
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="buscarListaComandos" id="_buscarListaComandos">
+	<tr data-order="enviarComando" id="_enviarComando">
 
 		<td class="attributes"><code>
 			 public 
-			
+			integer
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_buscarListaComandos">#</a>
-		<code><a href="source-class-Entrada.Sighra.Comando.html#16-47" title="Go to source code">buscarListaComandos</a>( )</code>
+		<a class="anchor" href="#_enviarComando">#</a>
+		<code><a href="source-class-Entrada.Sighra.Comando.html#13-48" title="Go to source code">enviarComando</a>( <span>type <var>$comando</var></span> )</code>
 
 		<div class="description short">
 			
-<p>metodo para realiza a busca da lista de comando do sighra.</p>
+<p>Metodo que envia o comando para a tecnologia</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>metodo para realiza a busca da lista de comando do sighra.</p>
+<p>Metodo que envia o comando para a tecnologia</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$comando</var></dt>
+					<dd><code>type</code><br>$comando Objeto comando com os dados para o envio do comando</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br>Retorna o id de ticket da inserção na tabela do sighra<br />
+				</div>
 
 
 
 
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="atulizaComando" id="_atulizaComando">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_atulizaComando">#</a>
+		<code><a href="source-class-Entrada.Sighra.Comando.html#50-106" title="Go to source code">atulizaComando</a>( <span>String <var>$ticket</var></span>, <span>integer <var>$id</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Metodo que que puxa o status atual dos comando enviados a sighra e atualiza o
+banco de dados do mesmo.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Metodo que que puxa o status atual dos comando enviados a sighra e atualiza o
+banco de dados do mesmo.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$ticket</var></dt>
+					<dd><code>String</code><br>$ticket Numero do ticket recuperado no envio do comando.</dd>
+					<dt><var>$id</var></dt>
+					<dd><code>integer</code><br>$id Numero do id da tabela de comandos para que possa ser atualizada.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br>Retorna False se houver algum problema e True caso tudo corra bem.<br />
+				</div>
 
 
 

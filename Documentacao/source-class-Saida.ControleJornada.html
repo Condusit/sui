@@ -8,7 +8,7 @@
 	<title>File Saida/ControleJornada.php | sui</title>
 
 	<script type="text/javascript" src="resources/combined.js?2780970235"></script>
-	<script type="text/javascript" src="elementlist.js?2145179911"></script>
+	<script type="text/javascript" src="elementlist.js?3887116818"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -31,9 +31,13 @@
 							</ul></li></ul></li>
 				<li><a href="namespace-Entrada.html">Entrada<span></span></a>
 						<ul>
+				<li><a href="namespace-Entrada.Goldensat.html">Goldensat</a>
+						</li>
 				<li><a href="namespace-Entrada.Mix.html">Mix</a>
 						</li>
 				<li><a href="namespace-Entrada.Sighra.html">Sighra</a>
+						</li>
+				<li><a href="namespace-Entrada.Tracker.html">Tracker</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-None.html">None</a>
@@ -143,44 +147,47 @@
 </span></span><span id="44" class="l"><a class="l" href="#44">44: </a><span class="php-comment">     * no formato de dados necessário pelo mesmo.
 </span></span><span id="45" class="l"><a class="l" href="#45">45: </a><span class="php-comment">     * @param Posicao $posicao Objeto &quot;Posicao&quot; com os dados de uma unica posição.
 </span></span><span id="46" class="l"><a class="l" href="#46">46: </a><span class="php-comment">     */</span>
-</span><span id="47" class="l"><a class="l" href="#47">47: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_enviaPosicao" href="#_enviaPosicao">enviaPosicao</a>(<span class="php-var">$posicao</span>){
+</span><span id="47" class="l"><a class="l" href="#47">47: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_enviaPosicao" href="#_enviaPosicao">enviaPosicao</a>(<span class="php-var">$posicoes</span>){
 </span><span id="48" class="l"><a class="l" href="#48">48: </a>        <span class="php-comment">//Conecta com o banco de dados do Controle de Jornada---</span>
 </span><span id="49" class="l"><a class="l" href="#49">49: </a>        <span class="php-var">$connCj</span> = Conexoes::conectarControleJornada();
 </span><span id="50" class="l"><a class="l" href="#50">50: </a>        <span class="php-comment">//Conecta com o banco de dados do Controle de Jornada---</span>
 </span><span id="51" class="l"><a class="l" href="#51">51: </a>        
-</span><span id="52" class="l"><a class="l" href="#52">52: </a>        
-</span><span id="53" class="l"><a class="l" href="#53">53: </a>        <span class="php-comment">//Constroi a sql para execução no banco de dados------------------</span>
-</span><span id="54" class="l"><a class="l" href="#54">54: </a>        <span class="php-var">$sql</span> = <span class="php-quote">&quot;insert into pacote_posicao set &quot;</span>;
-</span><span id="55" class="l"><a class="l" href="#55">55: </a>        <span class="php-var">$sql</span> .= <span class="php-quote">&quot;datahoraemissao = '&quot;</span>.<span class="php-keyword2">date</span>(<span class="php-quote">&quot;Y-m-d H:i:s&quot;</span>).<span class="php-quote">&quot;', &quot;</span>;
-</span><span id="56" class="l"><a class="l" href="#56">56: </a>        <span class="php-var">$sql</span> .= <span class="php-quote">&quot;datahorapacote = '</span><span class="php-var">{$posicao['data_hora_pacote']}</span><span class="php-quote">', &quot;</span>;
-</span><span id="57" class="l"><a class="l" href="#57">57: </a>        <span class="php-var">$sql</span> .= <span class="php-quote">&quot;data_hora_grav_filtro = '&quot;</span>.<span class="php-keyword2">date</span>(<span class="php-quote">&quot;Y-m-d H:i:s&quot;</span>).<span class="php-quote">&quot;', &quot;</span>;
-</span><span id="58" class="l"><a class="l" href="#58">58: </a>        <span class="php-var">$sql</span> .= <span class="php-quote">&quot;idseqmsg = '</span><span class="php-var">{$posicao['id_seq_mensagem']}</span><span class="php-quote">', &quot;</span>;
-</span><span id="59" class="l"><a class="l" href="#59">59: </a>        <span class="php-var">$sql</span> .= <span class="php-quote">&quot;idterminal = '</span><span class="php-var">{$posicao['id_rastreador']}</span><span class="php-quote">', &quot;</span>;
-</span><span id="60" class="l"><a class="l" href="#60">60: </a>        <span class="php-var">$sql</span> .= <span class="php-quote">&quot;latitude = '</span><span class="php-var">{$posicao['latitude']}</span><span class="php-quote">', &quot;</span>;
-</span><span id="61" class="l"><a class="l" href="#61">61: </a>        <span class="php-var">$sql</span> .= <span class="php-quote">&quot;longitude = '</span><span class="php-var">{$posicao['longitude']}</span><span class="php-quote">', &quot;</span>;
-</span><span id="62" class="l"><a class="l" href="#62">62: </a>        <span class="php-var">$sql</span> .= <span class="php-quote">&quot;datahoraevento = '</span><span class="php-var">{$posicao['data_hora_evento']}</span><span class="php-quote">', &quot;</span>;
-</span><span id="63" class="l"><a class="l" href="#63">63: </a>        <span class="php-var">$sql</span> .= <span class="php-quote">&quot;motId = '</span><span class="php-var">{$posicao['id_motorista']}</span><span class="php-quote">', &quot;</span>;
-</span><span id="64" class="l"><a class="l" href="#64">64: </a>        <span class="php-var">$sql</span> .= <span class="php-quote">&quot;mot = '</span><span class="php-var">{$posicao['nome_motorista']}</span><span class="php-quote">', &quot;</span>;
-</span><span id="65" class="l"><a class="l" href="#65">65: </a>        <span class="php-var">$sql</span> .= <span class="php-quote">&quot;ignicao = '</span><span class="php-var">{$posicao['ignicao']}</span><span class="php-quote">', &quot;</span>;
-</span><span id="66" class="l"><a class="l" href="#66">66: </a>        <span class="php-var">$sql</span> .= <span class="php-quote">&quot;tecnologia = '</span><span class="php-var">{$posicao['tecnologia']}</span><span class="php-quote">', &quot;</span>;
-</span><span id="67" class="l"><a class="l" href="#67">67: </a>        <span class="php-keyword1">if</span>(<span class="php-var">$posicao</span>[<span class="php-quote">'mensagem_livre'</span>] != <span class="php-quote">&quot;&quot;</span>){
-</span><span id="68" class="l"><a class="l" href="#68">68: </a>            <span class="php-var">$sql</span> .= <span class="php-quote">&quot;texto = '</span><span class="php-var">{$posicao['mensagem_livre']}</span><span class="php-quote">', &quot;</span>;
-</span><span id="69" class="l"><a class="l" href="#69">69: </a>        }<span class="php-keyword1">else</span> <span class="php-keyword1">if</span>(<span class="php-var">$posicao</span>[<span class="php-quote">'mensagem_macro'</span>] != <span class="php-quote">&quot;&quot;</span>){
-</span><span id="70" class="l"><a class="l" href="#70">70: </a>            <span class="php-var">$sql</span> .= <span class="php-quote">&quot;texto = '</span><span class="php-var">{$posicao['mensagem_macro']}</span><span class="php-quote">', &quot;</span>;
-</span><span id="71" class="l"><a class="l" href="#71">71: </a>        }<span class="php-keyword1">else</span>{
-</span><span id="72" class="l"><a class="l" href="#72">72: </a>            <span class="php-var">$sql</span> .= <span class="php-quote">&quot;texto = '', &quot;</span>;
-</span><span id="73" class="l"><a class="l" href="#73">73: </a>        }
-</span><span id="74" class="l"><a class="l" href="#74">74: </a>        <span class="php-var">$sql</span> .= <span class="php-quote">&quot;macro = '</span><span class="php-var">{$posicao['id_macro']}</span><span class="php-quote">', &quot;</span>;
-</span><span id="75" class="l"><a class="l" href="#75">75: </a>        <span class="php-var">$sql</span> .= <span class="php-quote">&quot;velocidade = '</span><span class="php-var">{$posicao['velocidade']}</span><span class="php-quote">'&quot;</span>;
-</span><span id="76" class="l"><a class="l" href="#76">76: </a>        <span class="php-comment">//Constroi a sql para execução no banco de dados------------------</span>
-</span><span id="77" class="l"><a class="l" href="#77">77: </a>        
-</span><span id="78" class="l"><a class="l" href="#78">78: </a>        
-</span><span id="79" class="l"><a class="l" href="#79">79: </a>        <span class="php-comment">//Executa a query no banco de dados---</span>
-</span><span id="80" class="l"><a class="l" href="#80">80: </a>        <span class="php-var">$connCj</span>-&gt;query(<span class="php-var">$sql</span>);
-</span><span id="81" class="l"><a class="l" href="#81">81: </a>        <span class="php-comment">//Executa a query no banco de dados---</span>
-</span><span id="82" class="l"><a class="l" href="#82">82: </a>    }
-</span><span id="83" class="l"><a class="l" href="#83">83: </a>}
-</span><span id="84" class="l"><a class="l" href="#84">84: </a></span></code></pre>
+</span><span id="52" class="l"><a class="l" href="#52">52: </a>        <span class="php-keyword1">foreach</span> (<span class="php-var">$posicoes</span> <span class="php-keyword1">as</span> <span class="php-var">$posicao</span>){
+</span><span id="53" class="l"><a class="l" href="#53">53: </a>            <span class="php-comment">//Constroi a sql para execução no banco de dados------------------</span>
+</span><span id="54" class="l"><a class="l" href="#54">54: </a>            <span class="php-var">$sql</span> = <span class="php-quote">&quot;insert into pacote_posicao set &quot;</span>;
+</span><span id="55" class="l"><a class="l" href="#55">55: </a>            <span class="php-var">$sql</span> .= <span class="php-quote">&quot;datahoraemissao = '&quot;</span>.<span class="php-keyword2">date</span>(<span class="php-quote">&quot;Y-m-d H:i:s&quot;</span>).<span class="php-quote">&quot;', &quot;</span>;
+</span><span id="56" class="l"><a class="l" href="#56">56: </a>            <span class="php-var">$sql</span> .= <span class="php-quote">&quot;datahorapacote = '</span><span class="php-var">{$posicao['data_hora_pacote']}</span><span class="php-quote">', &quot;</span>;
+</span><span id="57" class="l"><a class="l" href="#57">57: </a>            <span class="php-var">$sql</span> .= <span class="php-quote">&quot;data_hora_grav_filtro = '&quot;</span>.<span class="php-keyword2">date</span>(<span class="php-quote">&quot;Y-m-d H:i:s&quot;</span>).<span class="php-quote">&quot;', &quot;</span>;
+</span><span id="58" class="l"><a class="l" href="#58">58: </a>            <span class="php-var">$sql</span> .= <span class="php-quote">&quot;idseqmsg = '</span><span class="php-var">{$posicao['id_seq_mensagem']}</span><span class="php-quote">', &quot;</span>;
+</span><span id="59" class="l"><a class="l" href="#59">59: </a>            <span class="php-var">$sql</span> .= <span class="php-quote">&quot;idterminal = '</span><span class="php-var">{$posicao['id_rastreador']}</span><span class="php-quote">', &quot;</span>;
+</span><span id="60" class="l"><a class="l" href="#60">60: </a>            <span class="php-var">$sql</span> .= <span class="php-quote">&quot;latitude = '</span><span class="php-var">{$posicao['latitude']}</span><span class="php-quote">', &quot;</span>;
+</span><span id="61" class="l"><a class="l" href="#61">61: </a>            <span class="php-var">$sql</span> .= <span class="php-quote">&quot;longitude = '</span><span class="php-var">{$posicao['longitude']}</span><span class="php-quote">', &quot;</span>;
+</span><span id="62" class="l"><a class="l" href="#62">62: </a>            <span class="php-var">$sql</span> .= <span class="php-quote">&quot;datahoraevento = '</span><span class="php-var">{$posicao['data_hora_evento']}</span><span class="php-quote">', &quot;</span>;
+</span><span id="63" class="l"><a class="l" href="#63">63: </a>            <span class="php-var">$sql</span> .= <span class="php-quote">&quot;motId = '</span><span class="php-var">{$posicao['id_motorista']}</span><span class="php-quote">', &quot;</span>;
+</span><span id="64" class="l"><a class="l" href="#64">64: </a>            <span class="php-var">$sql</span> .= <span class="php-quote">&quot;mot = '</span><span class="php-var">{$posicao['nome_motorista']}</span><span class="php-quote">', &quot;</span>;
+</span><span id="65" class="l"><a class="l" href="#65">65: </a>            <span class="php-var">$sql</span> .= <span class="php-quote">&quot;ignicao = '</span><span class="php-var">{$posicao['ignicao']}</span><span class="php-quote">', &quot;</span>;
+</span><span id="66" class="l"><a class="l" href="#66">66: </a>            <span class="php-var">$sql</span> .= <span class="php-quote">&quot;tecnologia = '</span><span class="php-var">{$posicao['tecnologia']}</span><span class="php-quote">', &quot;</span>;
+</span><span id="67" class="l"><a class="l" href="#67">67: </a>            <span class="php-keyword1">if</span>(<span class="php-var">$posicao</span>[<span class="php-quote">'mensagem_livre'</span>] != <span class="php-quote">&quot;&quot;</span>){
+</span><span id="68" class="l"><a class="l" href="#68">68: </a>                <span class="php-var">$sql</span> .= <span class="php-quote">&quot;texto = '</span><span class="php-var">{$posicao['mensagem_livre']}</span><span class="php-quote">', &quot;</span>;
+</span><span id="69" class="l"><a class="l" href="#69">69: </a>            }<span class="php-keyword1">else</span> <span class="php-keyword1">if</span>(<span class="php-var">$posicao</span>[<span class="php-quote">'mensagem_macro'</span>] != <span class="php-quote">&quot;&quot;</span>){
+</span><span id="70" class="l"><a class="l" href="#70">70: </a>                <span class="php-var">$sql</span> .= <span class="php-quote">&quot;texto = '</span><span class="php-var">{$posicao['mensagem_macro']}</span><span class="php-quote">', &quot;</span>;
+</span><span id="71" class="l"><a class="l" href="#71">71: </a>            }<span class="php-keyword1">else</span>{
+</span><span id="72" class="l"><a class="l" href="#72">72: </a>                <span class="php-var">$sql</span> .= <span class="php-quote">&quot;texto = '', &quot;</span>;
+</span><span id="73" class="l"><a class="l" href="#73">73: </a>            }
+</span><span id="74" class="l"><a class="l" href="#74">74: </a>            <span class="php-var">$sql</span> .= <span class="php-quote">&quot;macro = '</span><span class="php-var">{$posicao['id_macro']}</span><span class="php-quote">', &quot;</span>;
+</span><span id="75" class="l"><a class="l" href="#75">75: </a>            <span class="php-var">$sql</span> .= <span class="php-quote">&quot;velocidade = '</span><span class="php-var">{$posicao['velocidade']}</span><span class="php-quote">'&quot;</span>;
+</span><span id="76" class="l"><a class="l" href="#76">76: </a>            <span class="php-comment">//Constroi a sql para execução no banco de dados------------------</span>
+</span><span id="77" class="l"><a class="l" href="#77">77: </a>
+</span><span id="78" class="l"><a class="l" href="#78">78: </a>            \Apoio\Helpers::msg(<span class="php-quote">&quot;Enviador&quot;</span>, <span class="php-quote">&quot;Posicao: </span><span class="php-var">{$posicao['id_rastreador']}</span><span class="php-quote"> da </span><span class="php-var">{$posicao['tecnologia']}</span><span class="php-quote"> para o </span><span class="php-var">{$posicao['programa']}</span><span class="php-quote">&quot;</span>);
+</span><span id="79" class="l"><a class="l" href="#79">79: </a>            <span class="php-comment">//Executa a query no banco de dados---</span>
+</span><span id="80" class="l"><a class="l" href="#80">80: </a>            <span class="php-var">$connCj</span>-&gt;query(<span class="php-var">$sql</span>);
+</span><span id="81" class="l"><a class="l" href="#81">81: </a>            <span class="php-comment">//Executa a query no banco de dados---</span>
+</span><span id="82" class="l"><a class="l" href="#82">82: </a>        }
+</span><span id="83" class="l"><a class="l" href="#83">83: </a>        
+</span><span id="84" class="l"><a class="l" href="#84">84: </a>        
+</span><span id="85" class="l"><a class="l" href="#85">85: </a>    }
+</span><span id="86" class="l"><a class="l" href="#86">86: </a>}
+</span><span id="87" class="l"><a class="l" href="#87">87: </a></span></code></pre>
 
 	<div id="footer">
 		sui API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>

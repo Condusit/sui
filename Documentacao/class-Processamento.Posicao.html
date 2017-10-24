@@ -7,7 +7,7 @@
 	<title>Class Processamento\Posicao | sui</title>
 
 	<script type="text/javascript" src="resources/combined.js?2780970235"></script>
-	<script type="text/javascript" src="elementlist.js?2145179911"></script>
+	<script type="text/javascript" src="elementlist.js?3887116818"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -30,9 +30,13 @@
 							</ul></li></ul></li>
 				<li><a href="namespace-Entrada.html">Entrada<span></span></a>
 						<ul>
+				<li><a href="namespace-Entrada.Goldensat.html">Goldensat</a>
+						</li>
 				<li><a href="namespace-Entrada.Mix.html">Mix</a>
 						</li>
 				<li><a href="namespace-Entrada.Sighra.html">Sighra</a>
+						</li>
+				<li><a href="namespace-Entrada.Tracker.html">Tracker</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-None.html">None</a>
@@ -54,12 +58,19 @@
 			<ul>
 				<li><a href="class-Processamento.Mix.html">Mix</a></li>
 				<li class="active"><a href="class-Processamento.Posicao.html">Posicao</a></li>
+				<li><a href="class-Processamento.Sighra.html">Sighra</a></li>
+				<li><a href="class-Processamento.Tracker.html">Tracker</a></li>
 			</ul>
 
 
 
 
 
+			<h3>Functions</h3>
+			<ul>
+				<li><a href="function-Processamento.atualizaComandos.html">atualizaComandos</a></li>
+				<li><a href="function-Processamento.enviaComandos.html">enviaComandos</a></li>
+			</ul>
 		</div>
 	</div>
 </div>
@@ -123,7 +134,7 @@
 				Anderson<br />
 				<b>Since:</b>
 				28/08/2017<br />
-		<b>Located at</b> <a href="source-class-Processamento.Posicao.html#7-190" title="Go to source code">Processamento/Posicao.php</a><br />
+		<b>Located at</b> <a href="source-class-Processamento.Posicao.html#7-202" title="Go to source code">Processamento/Posicao.php</a><br />
 	</div>
 
 
@@ -141,7 +152,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_gravarPosicoes">#</a>
-		<code><a href="source-class-Processamento.Posicao.html#120-189" title="Go to source code">gravarPosicoes</a>( <span>array <var>$listaPosicoes</var></span> )</code>
+		<code><a href="source-class-Processamento.Posicao.html#131-201" title="Go to source code">gravarPosicoes</a>( <span>array <var>$listaPosicoes</var></span> )</code>
 
 		<div class="description short">
 			
@@ -731,6 +742,60 @@ SUI.</p>
 			</div>
 		</div></td>
 	</tr>
+	<tr data-order="localizacao" id="$localizacao">
+		<td class="attributes"><code>
+			public  
+			String
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Processamento.Posicao.html#114-118" title="Go to source code"><var>$localizacao</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">null</span></code></td>
+		<td class="description"><div>
+			<a href="#$localizacao" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Referencia de localizacao da posicao.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Referencia de localizacao da posicao.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="tensaoBateria" id="$tensaoBateria">
+		<td class="attributes"><code>
+			public  
+			String
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Processamento.Posicao.html#119-123" title="Go to source code"><var>$tensaoBateria</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">null</span></code></td>
+		<td class="description"><div>
+			<a href="#$tensaoBateria" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>tensao ou porcentagem da bateria do rastreador ou localizador.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>tensao ou porcentagem da bateria do rastreador ou localizador.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
 	<tr data-order="tecnologia" id="$tecnologia">
 		<td class="attributes"><code>
 			public  
@@ -738,7 +803,7 @@ SUI.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Processamento.Posicao.html#114-118" title="Go to source code"><var>$tecnologia</var></a>
+				<a href="source-class-Processamento.Posicao.html#124-128" title="Go to source code"><var>$tecnologia</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">null</span></code></td>
 		<td class="description"><div>

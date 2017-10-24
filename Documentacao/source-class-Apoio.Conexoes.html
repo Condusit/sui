@@ -8,7 +8,7 @@
 	<title>File Apoio/Conexoes.php | sui</title>
 
 	<script type="text/javascript" src="resources/combined.js?2780970235"></script>
-	<script type="text/javascript" src="elementlist.js?2145179911"></script>
+	<script type="text/javascript" src="elementlist.js?3887116818"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -31,9 +31,13 @@
 							</ul></li></ul></li>
 				<li><a href="namespace-Entrada.html">Entrada<span></span></a>
 						<ul>
+				<li><a href="namespace-Entrada.Goldensat.html">Goldensat</a>
+						</li>
 				<li><a href="namespace-Entrada.Mix.html">Mix</a>
 						</li>
 				<li><a href="namespace-Entrada.Sighra.html">Sighra</a>
+						</li>
+				<li><a href="namespace-Entrada.Tracker.html">Tracker</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-None.html">None</a>
@@ -253,8 +257,48 @@
 </span><span id="152" class="l"><a class="l" href="#152">152: </a>            <span class="php-keyword1">throw</span> <span class="php-var">$ex</span>;
 </span><span id="153" class="l"><a class="l" href="#153">153: </a>        }
 </span><span id="154" class="l"><a class="l" href="#154">154: </a>    }
-</span><span id="155" class="l"><a class="l" href="#155">155: </a>}
-</span><span id="156" class="l"><a class="l" href="#156">156: </a></span></code></pre>
+</span><span id="155" class="l"><a class="l" href="#155">155: </a>    
+</span><span id="156" class="l"><a class="l" href="#156">156: </a>    <span class="php-comment">/**
+</span></span><span id="157" class="l"><a class="l" href="#157">157: </a><span class="php-comment">     * Metodo para conectar com o banco de dados do &quot;GoldenSat&quot;.
+</span></span><span id="158" class="l"><a class="l" href="#158">158: </a><span class="php-comment">     * @return PDO 
+</span></span><span id="159" class="l"><a class="l" href="#159">159: </a><span class="php-comment">     * Retorna um objeto &quot;PDO&quot; com a conexão do banco de dados &quot;goldensat&quot;.
+</span></span><span id="160" class="l"><a class="l" href="#160">160: </a><span class="php-comment">     * Ocorra um erro con a conexão retorna null.
+</span></span><span id="161" class="l"><a class="l" href="#161">161: </a><span class="php-comment">     * @throws Exception
+</span></span><span id="162" class="l"><a class="l" href="#162">162: </a><span class="php-comment">     * Gera erros de conexão com mysql.
+</span></span><span id="163" class="l"><a class="l" href="#163">163: </a><span class="php-comment">     */</span>
+</span><span id="164" class="l"><a class="l" href="#164">164: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">static</span> <span class="php-keyword1">function</span> <a id="_conectarGoldensat" href="#_conectarGoldensat">conectarGoldensat</a>(){
+</span><span id="165" class="l"><a class="l" href="#165">165: </a>        <span class="php-var">$dns</span> = <span class="php-quote">'mysql:host=127.0.0.1;dbname=goldensat'</span>;
+</span><span id="166" class="l"><a class="l" href="#166">166: </a>        <span class="php-var">$user</span> = <span class="php-quote">'integrador'</span>;
+</span><span id="167" class="l"><a class="l" href="#167">167: </a>        <span class="php-var">$password</span> = <span class="php-quote">'etltecno'</span>;
+</span><span id="168" class="l"><a class="l" href="#168">168: </a>        <span class="php-keyword1">try</span>{
+</span><span id="169" class="l"><a class="l" href="#169">169: </a>            <span class="php-var">$conn</span> = <span class="php-keyword1">new</span> \PDO(<span class="php-var">$dns</span>, <span class="php-var">$user</span>, <span class="php-var">$password</span>, <span class="php-keyword1">array</span>(PDO::MYSQL_ATTR_INIT_COMMAND =&gt; <span class="php-quote">&quot;SET NAMES utf8&quot;</span>, PDO::ATTR_TIMEOUT =&gt; <span class="php-quote">&quot;360&quot;</span>));
+</span><span id="170" class="l"><a class="l" href="#170">170: </a>            <span class="php-keyword1">return</span> <span class="php-var">$conn</span>;
+</span><span id="171" class="l"><a class="l" href="#171">171: </a>        }<span class="php-keyword1">catch</span>(Execelption <span class="php-var">$ex</span>){
+</span><span id="172" class="l"><a class="l" href="#172">172: </a>            <span class="php-keyword1">throw</span> <span class="php-var">$ex</span>;
+</span><span id="173" class="l"><a class="l" href="#173">173: </a>        }
+</span><span id="174" class="l"><a class="l" href="#174">174: </a>    }
+</span><span id="175" class="l"><a class="l" href="#175">175: </a>    
+</span><span id="176" class="l"><a class="l" href="#176">176: </a>    <span class="php-comment">/**
+</span></span><span id="177" class="l"><a class="l" href="#177">177: </a><span class="php-comment">     * Metodo para conectar com o banco de dados do &quot;Tracker&quot;.
+</span></span><span id="178" class="l"><a class="l" href="#178">178: </a><span class="php-comment">     * @return PDO 
+</span></span><span id="179" class="l"><a class="l" href="#179">179: </a><span class="php-comment">     * Retorna um objeto &quot;PDO&quot; com a conexão do banco de dados &quot;tracker&quot;.
+</span></span><span id="180" class="l"><a class="l" href="#180">180: </a><span class="php-comment">     * Ocorra um erro con a conexão retorna null.
+</span></span><span id="181" class="l"><a class="l" href="#181">181: </a><span class="php-comment">     * @throws Exception
+</span></span><span id="182" class="l"><a class="l" href="#182">182: </a><span class="php-comment">     * Gera erros de conexão com mysql.
+</span></span><span id="183" class="l"><a class="l" href="#183">183: </a><span class="php-comment">     */</span>
+</span><span id="184" class="l"><a class="l" href="#184">184: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">static</span> <span class="php-keyword1">function</span> <a id="_conectarTracker" href="#_conectarTracker">conectarTracker</a>(){
+</span><span id="185" class="l"><a class="l" href="#185">185: </a>        <span class="php-var">$dns</span> = <span class="php-quote">'mysql:host=127.0.0.1;dbname=tracker'</span>;
+</span><span id="186" class="l"><a class="l" href="#186">186: </a>        <span class="php-var">$user</span> = <span class="php-quote">'integrador'</span>;
+</span><span id="187" class="l"><a class="l" href="#187">187: </a>        <span class="php-var">$password</span> = <span class="php-quote">'etltecno'</span>;
+</span><span id="188" class="l"><a class="l" href="#188">188: </a>        <span class="php-keyword1">try</span>{
+</span><span id="189" class="l"><a class="l" href="#189">189: </a>            <span class="php-var">$conn</span> = <span class="php-keyword1">new</span> \PDO(<span class="php-var">$dns</span>, <span class="php-var">$user</span>, <span class="php-var">$password</span>, <span class="php-keyword1">array</span>(PDO::MYSQL_ATTR_INIT_COMMAND =&gt; <span class="php-quote">&quot;SET NAMES utf8&quot;</span>, PDO::ATTR_TIMEOUT =&gt; <span class="php-quote">&quot;360&quot;</span>));
+</span><span id="190" class="l"><a class="l" href="#190">190: </a>            <span class="php-keyword1">return</span> <span class="php-var">$conn</span>;
+</span><span id="191" class="l"><a class="l" href="#191">191: </a>        }<span class="php-keyword1">catch</span>(Execelption <span class="php-var">$ex</span>){
+</span><span id="192" class="l"><a class="l" href="#192">192: </a>            <span class="php-keyword1">throw</span> <span class="php-var">$ex</span>;
+</span><span id="193" class="l"><a class="l" href="#193">193: </a>        }
+</span><span id="194" class="l"><a class="l" href="#194">194: </a>    }
+</span><span id="195" class="l"><a class="l" href="#195">195: </a>}
+</span><span id="196" class="l"><a class="l" href="#196">196: </a></span></code></pre>
 
 	<div id="footer">
 		sui API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>

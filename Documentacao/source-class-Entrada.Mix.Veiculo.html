@@ -8,7 +8,7 @@
 	<title>File Entrada/Mix/Veiculo.php | sui</title>
 
 	<script type="text/javascript" src="resources/combined.js?2780970235"></script>
-	<script type="text/javascript" src="elementlist.js?2145179911"></script>
+	<script type="text/javascript" src="elementlist.js?3887116818"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -31,9 +31,13 @@
 							</ul></li></ul></li>
 				<li class="active"><a href="namespace-Entrada.html">Entrada<span></span></a>
 						<ul>
+				<li><a href="namespace-Entrada.Goldensat.html">Goldensat</a>
+						</li>
 				<li class="active"><a href="namespace-Entrada.Mix.html">Mix</a>
 						</li>
 				<li><a href="namespace-Entrada.Sighra.html">Sighra</a>
+						</li>
+				<li><a href="namespace-Entrada.Tracker.html">Tracker</a>
 						</li>
 							</ul></li>
 				<li><a href="namespace-None.html">None</a>
@@ -171,7 +175,7 @@
 </span><span id="66" class="l"><a class="l" href="#66"> 66: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_atualizarListaVeiculos" href="#_atualizarListaVeiculos">atualizarListaVeiculos</a>(){
 </span><span id="67" class="l"><a class="l" href="#67"> 67: </a>        <span class="php-comment">//Conecta e busca o token para realização da requisição----------------------------------------------------------</span>
 </span><span id="68" class="l"><a class="l" href="#68"> 68: </a>        <span class="php-var">$connMix</span> = Conexoes::conectarMix();
-</span><span id="69" class="l"><a class="l" href="#69"> 69: </a>        <span class="php-var">$usuario</span> = <span class="php-var">$connMix</span>-&gt;query(<span class="php-quote">&quot;select usuario.token from usuario where usuario.usuario = 'krona'&quot;</span>)-&gt;fetchAll();
+</span><span id="69" class="l"><a class="l" href="#69"> 69: </a>        <span class="php-var">$usuario</span> = <span class="php-var">$connMix</span>-&gt;query(<span class="php-quote">&quot;select usuario.token from usuario where usuario.usuario = '56122CE BR - MAJONAV'&quot;</span>)-&gt;fetchAll();
 </span><span id="70" class="l"><a class="l" href="#70"> 70: </a>        <span class="php-comment">//Conecta e busca o token para realização da requisição----------------------------------------------------------</span>
 </span><span id="71" class="l"><a class="l" href="#71"> 71: </a>        
 </span><span id="72" class="l"><a class="l" href="#72"> 72: </a>        
@@ -186,27 +190,27 @@
 </span><span id="81" class="l"><a class="l" href="#81"> 81: </a>            
 </span><span id="82" class="l"><a class="l" href="#82"> 82: </a>            
 </span><span id="83" class="l"><a class="l" href="#83"> 83: </a>            <span class="php-comment">//Executa a requisição-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
-</span><span id="84" class="l"><a class="l" href="#84"> 84: </a>            <span class="php-keyword1">try</span>{
+</span><span id="84" class="l"><a class="l" href="#84"> 84: </a>            
 </span><span id="85" class="l"><a class="l" href="#85"> 85: </a>                <span class="php-var">$req</span> = Requisitor::enviaRequisicao(<span class="php-var">$body</span>, <span class="php-quote">&quot;GetVehiclesList&quot;</span>, <span class="php-var">$url</span>, <span class="php-var">$header</span>, <span class="php-var">$ns</span>);
-</span><span id="86" class="l"><a class="l" href="#86"> 86: </a>            } <span class="php-keyword1">catch</span> (Exception <span class="php-var">$ex</span>) {
-</span><span id="87" class="l"><a class="l" href="#87"> 87: </a>                <span class="php-comment">//Se retornar que token é invalido faz o login para obter um novo token--------------------------------------------------------------------------------------------------------------------</span>
-</span><span id="88" class="l"><a class="l" href="#88"> 88: </a>                <span class="php-var">$erroToken</span> = <span class="php-quote">&quot;System.Web.Services.Protocols.SoapException: Server was unable to process request. ---&gt; System.Security.Authentication.AuthenticationException: Invalid Token. Please log in.
-</span></span><span id="89" class="l"><a class="l" href="#89"> 89: </a><span class="php-quote">                at MiX.Web.ContextManager.GetTicket(String AuthenticationToken)
-</span></span><span id="90" class="l"><a class="l" href="#90"> 90: </a><span class="php-quote">                at MiX.Web.ContextManager.GetContext(String AuthenticationToken)
-</span></span><span id="91" class="l"><a class="l" href="#91"> 91: </a><span class="php-quote">                at VehicleProcessesWS.GetVehiclesList() in D:\b\2\_work\24\s\WebServices\AssetDataWebSvc\App_Code\VehicleProcessesWS.cs:line 127
-</span></span><span id="92" class="l"><a class="l" href="#92"> 92: </a><span class="php-quote">                --- End of inner exception stack trace ---&quot;</span>;
-</span><span id="93" class="l"><a class="l" href="#93"> 93: </a>                
-</span><span id="94" class="l"><a class="l" href="#94"> 94: </a>                <span class="php-keyword1">if</span>(<span class="php-var">$ex</span>-&gt;getMessage() == <span class="php-var">$erroToken</span>){
-</span><span id="95" class="l"><a class="l" href="#95"> 95: </a>                    <span class="php-var">$user</span> = <span class="php-keyword1">new</span> Usuario();
-</span><span id="96" class="l"><a class="l" href="#96"> 96: </a>                    <span class="php-var">$user</span>-&gt;fazerLogin(<span class="php-quote">&quot;krona&quot;</span>);
-</span><span id="97" class="l"><a class="l" href="#97"> 97: </a>                    <span class="php-keyword1">unset</span>(<span class="php-var">$user</span>);
-</span><span id="98" class="l"><a class="l" href="#98"> 98: </a>                    <span class="php-var">$this</span>-&gt;atualizarListaVeiculos();
-</span><span id="99" class="l"><a class="l" href="#99"> 99: </a>                }<span class="php-keyword1">else</span>{
-</span><span id="100" class="l"><a class="l" href="#100">100: </a>                    <span class="php-var">$erro</span> = <span class="php-keyword1">new</span> Erro(<span class="php-quote">&quot;Veiculo&quot;</span>, <span class="php-quote">&quot;atualizarListaVeiculos&quot;</span>, <span class="php-quote">&quot;Erro ao realizar requisição do web service&quot;</span>, <span class="php-keyword2">date</span>(<span class="php-quote">&quot;Y-m-d H:i:s&quot;</span>));
-</span><span id="101" class="l"><a class="l" href="#101">101: </a>                    <span class="php-var">$erro</span>-&gt;registrarErro();
-</span><span id="102" class="l"><a class="l" href="#102">102: </a>                }
-</span><span id="103" class="l"><a class="l" href="#103">103: </a>                <span class="php-comment">//Se retornar que token é invalido faz o login para obter um novo token--------------------------------------------------------------------------------------------------------------------</span>
-</span><span id="104" class="l"><a class="l" href="#104">104: </a>            }
+</span><span id="86" class="l"><a class="l" href="#86"> 86: </a>                
+</span><span id="87" class="l"><a class="l" href="#87"> 87: </a>                <span class="php-keyword1">if</span>(<span class="php-var">$req</span> <span class="php-keyword1">instanceof</span> \Exception){
+</span><span id="88" class="l"><a class="l" href="#88"> 88: </a>                    <span class="php-comment">//Se retornar que token é invalido faz o login para obter um novo token--------------------------------------------------------------------------------------------------------------------</span>
+</span><span id="89" class="l"><a class="l" href="#89"> 89: </a>                    <span class="php-keyword1">if</span>(<span class="php-keyword2">strripos</span>(<span class="php-var">$req</span>-&gt;getMessage(), <span class="php-quote">&quot;(String AuthenticationToken)&quot;</span>) != <span class="php-keyword1">FALSE</span>){
+</span><span id="90" class="l"><a class="l" href="#90"> 90: </a>                        <span class="php-var">$user</span> = <span class="php-keyword1">new</span> Usuario();
+</span><span id="91" class="l"><a class="l" href="#91"> 91: </a>                        <span class="php-var">$user</span>-&gt;fazerLogin(<span class="php-quote">&quot;56122CE BR - MAJONAV&quot;</span>);
+</span><span id="92" class="l"><a class="l" href="#92"> 92: </a>                        <span class="php-keyword1">unset</span>(<span class="php-var">$user</span>);
+</span><span id="93" class="l"><a class="l" href="#93"> 93: </a>                        <span class="php-var">$this</span>-&gt;atualizarListaVeiculos();
+</span><span id="94" class="l"><a class="l" href="#94"> 94: </a>                    }<span class="php-keyword1">else</span>{
+</span><span id="95" class="l"><a class="l" href="#95"> 95: </a>                        <span class="php-var">$erro</span> = <span class="php-keyword1">new</span> Erro(<span class="php-quote">&quot;Veiculo&quot;</span>, <span class="php-quote">&quot;atualizarListaVeiculos&quot;</span>, <span class="php-quote">&quot;Erro ao realizar requisição do web service&quot;</span>, <span class="php-keyword2">date</span>(<span class="php-quote">&quot;Y-m-d H:i:s&quot;</span>));
+</span><span id="96" class="l"><a class="l" href="#96"> 96: </a>                        <span class="php-var">$erro</span>-&gt;registrarErro();
+</span><span id="97" class="l"><a class="l" href="#97"> 97: </a>                    }
+</span><span id="98" class="l"><a class="l" href="#98"> 98: </a>                    <span class="php-comment">//Se retornar que token é invalido faz o login para obter um novo token--------------------------------------------------------------------------------------------------------------------</span>
+</span><span id="99" class="l"><a class="l" href="#99"> 99: </a>                }
+</span><span id="100" class="l"><a class="l" href="#100">100: </a>                    
+</span><span id="101" class="l"><a class="l" href="#101">101: </a>                
+</span><span id="102" class="l"><a class="l" href="#102">102: </a><span class="php-comment">//            } catch (Exception $ex) {</span>
+</span><span id="103" class="l"><a class="l" href="#103">103: </a><span class="php-comment">//                </span>
+</span><span id="104" class="l"><a class="l" href="#104">104: </a><span class="php-comment">//            }</span>
 </span><span id="105" class="l"><a class="l" href="#105">105: </a>            <span class="php-comment">//Executa a requisição-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
 </span><span id="106" class="l"><a class="l" href="#106">106: </a>            
 </span><span id="107" class="l"><a class="l" href="#107">107: </a>            
