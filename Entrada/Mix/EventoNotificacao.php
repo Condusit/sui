@@ -17,7 +17,7 @@ class EventoNotificacao {
     public function buscarEventoNotificacao(){
         //Conecta e busca o token para realização da requisição----------------------------------------------------------
         $connMix = Conexoes::conectarMix();
-        $usuario = $connMix->query("select usuario.token from usuario where usuario.usuario = 'krona'")->fetchAll();
+        $usuario = $connMix->query("select usuario.token from usuario where usuario.usuario = '56122CE BR - MAJONAV'")->fetchAll();
         $ultimoIdEvento = $connMix->query("select controle.id from controle where controle.nome = 'evento'")->fetchAll();
         //Conecta e busca o token para realização da requisição----------------------------------------------------------
         

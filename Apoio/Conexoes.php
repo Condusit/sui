@@ -21,9 +21,9 @@ class Conexoes {
      * Gera erros de conexão com mysql.
      */
     public static function conectarMix(){
-        $dns = 'mysql:host=127.0.0.1;dbname=mix';
-        $user = 'integrador';
-        $password = 'etltecno';
+        $dns = 'mysql:host=192.168.1.54;dbname=mix';
+        $user = 's_sui_mix';
+        $password = 'TiB445';
         try{
             $conn = new \PDO($dns, $user, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8", PDO::ATTR_TIMEOUT => "360"));
             return $conn;
@@ -41,9 +41,9 @@ class Conexoes {
      * Gera erros de conexão com mysql.
      */
     public static function conectarCentral(){
-        $dns = 'mysql:host=127.0.0.1;dbname=central_integracoes';
-        $user = 'integrador';
-        $password = 'etltecno';
+        $dns = 'mysql:host=192.168.1.54;dbname=central_integracoes';
+        $user = 's_sui_central';
+        $password = 'GA4oRI';
         try{
             $conn = new \PDO($dns, $user, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8", PDO::ATTR_TIMEOUT => "360"));
             return $conn;
@@ -142,9 +142,9 @@ class Conexoes {
      * Gera erros de conexão com mysql.
      */
     public static function conectarSighra(){
-        $dns = 'mysql:host=127.0.0.1;dbname=sighra';
-        $user = 'integrador';
-        $password = 'etltecno';
+        $dns = 'mysql:host=192.168.1.54;dbname=sighra';
+        $user = 's_sui_sighra';
+        $password = 'joGI5I';
         try{
             $conn = new \PDO($dns, $user, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8", PDO::ATTR_TIMEOUT => "360"));
             return $conn;
@@ -162,7 +162,7 @@ class Conexoes {
      * Gera erros de conexão com mysql.
      */
     public static function conectarGoldensat(){
-        $dns = 'mysql:host=127.0.0.1;dbname=goldensat';
+        $dns = 'mysql:host=192.168.1.54;dbname=goldensat';
         $user = 'integrador';
         $password = 'etltecno';
         try{
@@ -182,9 +182,9 @@ class Conexoes {
      * Gera erros de conexão com mysql.
      */
     public static function conectarTracker(){
-        $dns = 'mysql:host=127.0.0.1;dbname=tracker';
-        $user = 'integrador';
-        $password = 'etltecno';
+        $dns = 'mysql:host=192.168.1.54;dbname=tracker';
+        $user = 's_sui_tracker';
+        $password = 'Ja3uMI';
         try{
             $conn = new \PDO($dns, $user, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8", PDO::ATTR_TIMEOUT => "360"));
             return $conn;

@@ -68,6 +68,7 @@ class Erro {
                         $arquivo = fopen("{$nomeArquivo}.txt", "a");
                         fwrite($arquivo, $linha);
                         fclose($arquivo);
+                        Helpers::msg("Erro", "Houve um erro no processo verifique o log para mais informacoes");
                         //Registra o erro em arquivos de log .TXT----------
 
 

@@ -48,7 +48,7 @@ class Evento {
     public function atualizarListaEventos(){
         //Conecta e busca o token para realização da requisição----------------------------------------------------------
         $connMix = Conexoes::conectarMix();
-        $usuario = $connMix->query("select usuario.token from usuario where usuario.usuario = 'krona'")->fetchAll();
+        $usuario = $connMix->query("select usuario.token from usuario where usuario.usuario = '56122CE BR - MAJONAV'")->fetchAll();
         //Conecta e busca o token para realização da requisição----------------------------------------------------------
         
         
